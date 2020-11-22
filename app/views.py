@@ -5,7 +5,7 @@ from flask import render_template
 from flask import request
 import os
 
-UPLOAD_FOLDER = '.'
+UPLOAD_FOLDER = '/tmp'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
