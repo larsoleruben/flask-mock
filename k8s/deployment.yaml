@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: docker-test
+  name: docker-test
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-test
+  template:
+    metadata:
+      labels:
+        app: docker-test
+    spec:
+    #   volumes:
+    #   - name: demo-secret
+    #     secret:
+    #       secretName: demo-secret
+      containers:
+      - image: docker-test:2.00
+        name: docker-test
+        imagePullPolicy: Never
+        # envFrom:
+        #   - configMapRef:
+        #       name: demo-config
+        # volumeMounts:
+        # - name: demo-secret
+        #   mountPath: "/demo-secrets"
+        #   readOnly: true
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "200m"
+          limits:
+            memory: "1.0Gi"
+            cpu: "1000m"
